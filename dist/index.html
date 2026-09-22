@@ -63,6 +63,8 @@
     .calendar-month .calendar-legend{grid-column:1 / -1}
     /* Day-plan cards */
     .week.calendar-day{gap:10px}.day-agenda.day-plan-card{grid-template-columns:88px minmax(0,1fr) auto;gap:14px;padding:14px 15px;border:1px solid var(--line);border-radius:10px;background:#fff;box-shadow:0 2px 5px rgba(20,30,45,.025)}.day-agenda.day-plan-card+.day-plan-card{margin-top:0}.day-agenda.day-plan-card time{color:var(--ink);font-size:13px}.day-agenda.day-plan-card strong{font-size:14px}.plan-countdown{align-self:center;white-space:nowrap;border-radius:99px;background:#eaf0ff;color:#3158b7;padding:5px 8px;font-size:11px;font-weight:750}.day-plan-card:has(.plan-countdown:nth-last-child(1)) .plan-countdown{background:#eaf0ff}@media(max-width:520px){.day-agenda.day-plan-card{grid-template-columns:64px minmax(0,1fr);gap:9px;padding:12px}.plan-countdown{grid-column:2;justify-self:start;margin-top:2px}}
+    /* Daily schedule column alignment */
+    .day-plan-columns{display:grid;grid-template-columns:96px minmax(0,1fr) 118px;gap:14px;padding:0 15px 3px;color:#7b8797;font-size:10px;font-weight:750;letter-spacing:.055em;text-transform:uppercase}.day-agenda.day-plan-card{grid-template-columns:96px minmax(0,1fr) 118px;align-items:center}.day-agenda.day-plan-card>div{min-width:0}.day-agenda.day-plan-card .plan-countdown{justify-self:end;text-align:center;min-width:108px}.day-agenda.day-plan-card time{font-variant-numeric:tabular-nums}.day-agenda.day-plan-card strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}@media(max-width:520px){.day-plan-columns{display:none}.day-agenda.day-plan-card{grid-template-columns:72px minmax(0,1fr)}.day-agenda.day-plan-card .plan-countdown{grid-column:2;justify-self:start;min-width:0}.day-agenda.day-plan-card strong{white-space:normal}}
 </style>
 </head>
 <body>
@@ -98,5 +100,8 @@
   </script>
   <script>
     (()=>{const countdowns={'09:30':'Starts in 25 min','11:00':'Starts in 1 hr 55 min','14:30':'Starts in 5 hr 25 min'};function decorateDayPlan(){document.querySelectorAll('.calendar-day .day-agenda').forEach(row=>{if(row.classList.contains('day-plan-card'))return;row.classList.add('day-plan-card');const time=row.querySelector('time')?.textContent.trim();const countdown=document.createElement('span');countdown.className='plan-countdown';countdown.textContent=time==='All day'?'All-day plan':(countdowns[time]||'Upcoming');row.append(countdown)})}document.addEventListener('click',event=>{if(event.target.closest('[data-calendar-view="day"],[data-calendar-day]'))setTimeout(decorateDayPlan,0)});document.addEventListener('change',event=>{if(event.target.matches('.calendar-category'))setTimeout(decorateDayPlan,0)})})();
+  </script>
+  <script>
+    (()=>{function addDayPlanColumns(){const dayCalendar=document.querySelector('.calendar-day');if(!dayCalendar||dayCalendar.querySelector('.day-plan-columns'))return;const columns=document.createElement('div');columns.className='day-plan-columns';columns.innerHTML='<span>Time</span><span>Appointment</span><span>Starts in</span>';const firstPlan=dayCalendar.querySelector('.day-plan-card');if(firstPlan)dayCalendar.insertBefore(columns,firstPlan)}document.addEventListener('click',event=>{if(event.target.closest('[data-calendar-view="day"],[data-calendar-day]'))setTimeout(addDayPlanColumns,1)});document.addEventListener('change',event=>{if(event.target.matches('.calendar-category'))setTimeout(addDayPlanColumns,1)})})();
   </script>
 </body></html>
