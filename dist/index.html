@@ -42,6 +42,8 @@
     /* Smooth logout into sign-in */
     @keyframes workspace-exit{to{opacity:0;transform:translateY(-8px) scale(.992)}}@keyframes login-arrival{from{opacity:0;transform:translateY(14px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
     .app.signing-out{pointer-events:none;animation:workspace-exit .2s ease forwards}.login-screen.entering .login-card{animation:login-arrival .36s cubic-bezier(.2,.8,.2,1) both}.login-screen.entering::before{content:"";position:fixed;inset:0;background:rgba(255,255,255,.55);animation:rise-in .25s ease both}@media(prefers-reduced-motion:reduce){.app.signing-out,.login-screen.entering .login-card,.login-screen.entering::before{animation:none}}
+    /* Desktop workspace scrolling with persistent navigation */
+    @media (min-width:901px){html,body{height:100%;overflow:hidden}.app{height:100dvh;min-height:0;overflow:hidden}.side{position:sticky;top:0;height:100dvh;overflow-y:auto;overscroll-behavior:contain}.main{height:100dvh;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable}}
   </style>
 </head>
 <body>
