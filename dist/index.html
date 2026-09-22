@@ -24,6 +24,8 @@
     .main{max-width:none;width:100%;margin:0;padding-inline:clamp(24px,4vw,64px)}.dashboard-grid{width:100%;grid-template-columns:minmax(0,1.65fr) minmax(300px,.85fr);align-items:start}.schedule,.right-stack,.right-stack .card,.list{width:100%;min-width:0}.availability{max-width:none}
     @media (max-width:1180px){.dashboard-grid{grid-template-columns:1fr}.right-stack{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.right-stack .card{height:100%}}
     @media (max-width:720px){.main{padding-inline:18px}.right-stack{grid-template-columns:1fr}.dashboard-grid{gap:18px}.schedule{padding:18px}}
+    /* Keep page context directly below the menu control on compact layouts */
+    @media (max-width:900px){.top{display:grid;grid-template-columns:auto minmax(0,1fr) auto;grid-template-rows:auto auto;column-gap:12px;row-gap:8px;align-items:center}.menu-toggle{grid-column:1;grid-row:1}.top-right{grid-column:3;grid-row:1;margin-left:0}.crumb{grid-column:1 / -1;grid-row:2;margin:0}.crumb-tail{display:inline}}
   </style>
 </head>
 <body>
