@@ -124,4 +124,5 @@
     (()=>{const dateNav=document.querySelector('#dashboard .date-nav'),todayControl=dateNav?.querySelectorAll('button')[1];if(!todayControl)return;const monitor=document.createElement('button');monitor.type='button';monitor.className='monitor-switch is-on';monitor.setAttribute('role','switch');monitor.setAttribute('aria-checked','true');monitor.setAttribute('aria-label','Toggle schedule monitoring');monitor.innerHTML='<span class="monitor-label">Monitor schedule</span><span class="monitor-track" aria-hidden="true"></span>';todayControl.replaceWith(monitor);monitor.addEventListener('click',()=>{const enabled=monitor.classList.toggle('is-on');monitor.setAttribute('aria-checked',String(enabled));const notice=document.getElementById('toast');notice.textContent=enabled?'Schedule monitoring is on':'Schedule monitoring is paused';notice.classList.add('show');setTimeout(()=>notice.classList.remove('show'),2000)})})();
   </script>
   <script>document.querySelector('.monitor-switch')?.remove();</script>
+  <script>document.querySelector('#dashboard .date-nav')?.remove();</script>
 </body></html>
