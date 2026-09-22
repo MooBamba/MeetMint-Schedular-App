@@ -73,6 +73,8 @@
     .day-agenda.day-plan-card{grid-template-columns:minmax(118px,1fr) minmax(0,2.2fr) minmax(136px,1fr)}.day-agenda.day-plan-card time{width:100%}.day-agenda.day-plan-card>div{width:100%}.day-agenda.day-plan-card .plan-countdown{justify-self:stretch;margin-right:16px;text-align:center}@media(max-width:520px){.day-agenda.day-plan-card{grid-template-columns:94px minmax(0,1fr)}.day-agenda.day-plan-card .plan-countdown{justify-self:start;width:auto}}
     /* Schedule-monitor switch */
     .monitor-switch{display:inline-flex!important;align-items:center;gap:8px;min-height:30px;border:1px solid var(--line)!important;border-radius:8px!important;background:#fff!important;padding:4px 8px!important;color:var(--muted)!important;font-size:12px!important;font-weight:700}.monitor-switch .monitor-track{position:relative;width:28px;height:16px;border-radius:99px;background:#cbd3dc;transition:background .2s ease}.monitor-switch .monitor-track::after{content:"";position:absolute;top:2px;left:2px;width:12px;height:12px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(15,28,43,.18);transition:transform .2s ease}.monitor-switch.is-on{color:var(--mint-deep)!important;border-color:#cfe9da!important}.monitor-switch.is-on .monitor-track{background:var(--mint-deep)}.monitor-switch.is-on .monitor-track::after{transform:translateX(12px)}@media(max-width:520px){.monitor-switch .monitor-label{display:none}.monitor-switch{width:34px;justify-content:center;padding:4px!important}}
+    /* Day view must not inherit the weekly multi-column calendar grid */
+    .week.calendar-day{grid-template-columns:minmax(0,1fr);width:100%}.week.calendar-day .day-plan-card{width:100%;grid-column:1 / -1}
 </style>
 </head>
 <body>
