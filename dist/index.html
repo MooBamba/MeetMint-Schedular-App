@@ -44,6 +44,8 @@
     .app.signing-out{pointer-events:none;animation:workspace-exit .2s ease forwards}.login-screen.entering .login-card{animation:login-arrival .36s cubic-bezier(.2,.8,.2,1) both}.login-screen.entering::before{content:"";position:fixed;inset:0;background:rgba(255,255,255,.55);animation:rise-in .25s ease both}@media(prefers-reduced-motion:reduce){.app.signing-out,.login-screen.entering .login-card,.login-screen.entering::before{animation:none}}
     /* Desktop workspace scrolling with persistent navigation */
     @media (min-width:901px){html,body{height:100%;overflow:hidden}.app{height:100dvh;min-height:0;overflow:hidden}.side{position:sticky;top:0;height:100dvh;overflow-y:auto;overscroll-behavior:contain}.main{height:100dvh;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable}}
+    /* Keep the complete desktop navigation in view */
+    @media (min-width:901px){.side{overflow:hidden;padding-block:clamp(16px,3.5vh,25px);gap:clamp(16px,3vh,30px)}.brand{font-size:clamp(17px,1.5vw,20px)}.nav{gap:3px}.nav button{padding-block:clamp(8px,1.25vh,11px)}.side-bottom{padding-top:clamp(12px,2.2vh,18px);padding-bottom:2px;flex-shrink:0}.main{overflow-y:auto}}
   </style>
 </head>
 <body>
