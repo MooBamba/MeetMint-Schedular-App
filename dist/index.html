@@ -79,6 +79,7 @@
     .week.calendar-day{grid-template-columns:minmax(0,1fr);width:100%}.week.calendar-day .day-plan-card{width:100%;grid-column:1 / -1}
     /* Header date is intentionally omitted to keep the workspace chrome concise */
     .top-right > span:first-child{display:none}
+    .composer-field .field-error{display:none;color:#b63c39;font-size:12px;font-weight:650;line-height:1.3}.composer-field.has-error .field-error{display:block}.composer-field.has-error input,.composer-field.has-error select{border-color:#d9554f;background:#fff8f7}.composer-field.has-error input:focus,.composer-field.has-error select:focus{outline-color:rgba(217,85,79,.18);border-color:#c64b46}
 </style>
 </head>
 <body>
@@ -129,4 +130,7 @@
   </script>
   <script>document.querySelector('.monitor-switch')?.remove();</script>
   <script>document.querySelector('#dashboard .date-nav')?.remove();</script>
+  <script>
+    (()=>{const form=document.getElementById('appointment-composer-form');if(!form)return;form.noValidate=true;const fields={name:{message:'Enter the invitee’s name.'},email:{message:'Enter an email address.',invalid:'Use a valid email address.'},date:{message:'Choose a date.'},time:{message:'Choose a time.'},type:{message:'Select a meeting type.'}};Object.entries(fields).forEach(([name])=>{const input=form.elements[name],field=input.closest('.composer-field');if(!field.querySelector('.field-error')){const error=document.createElement('p');error.className='field-error';error.id=`${input.id}-error`;error.setAttribute('role','alert');field.append(error);input.setAttribute('aria-describedby',error.id)}const clear=()=>{field.classList.remove('has-error');input.removeAttribute('aria-invalid')};input.addEventListener('input',clear);input.addEventListener('change',clear)});function validate(){let first;Object.entries(fields).forEach(([name,copy])=>{const input=form.elements[name],field=input.closest('.composer-field'),error=field.querySelector('.field-error');let message='';if(!String(input.value).trim())message=copy.message;else if(name==='email'&&!input.validity.valid)message=copy.invalid;if(message){field.classList.add('has-error');input.setAttribute('aria-invalid','true');error.textContent=message;first??=input}});return first}form.addEventListener('submit',event=>{const first=validate();if(first){event.preventDefault();event.stopImmediatePropagation();first.focus()}},true)})();
+  </script>
 </body></html>
