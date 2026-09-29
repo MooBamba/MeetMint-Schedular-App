@@ -12,17 +12,19 @@ An appointment scheduling interface for independent professionals and business t
 
 ## Current status
 
-This is a front-end prototype designed from `appointment-scheduler-product-brief.md`. It uses representative data and browser-only interactions; it does not yet connect to Google or Microsoft calendars, send real email, authenticate users, or store appointments.
+The static dashboard is connected to the hosted Supabase project `aguaqpnaeayzkoicgill`. Public booking-page data loads through the Supabase REST API, and completed bookings are stored through a conflict-checking Postgres function protected by row-level security. Dashboard authentication, calendar-provider synchronization, and transactional email delivery remain prototype states.
 
 ## Next implementation milestones
 
-1. Add authentication, PostgreSQL/Prisma schema, and host profiles.
-2. Integrate a calendar provider, then implement conflict-safe availability and slot calculation.
-3. Add booking persistence, Resend confirmation emails, and calendar-event creation.
+1. Connect the existing sign-in interface to Supabase Auth and assign the host profile owner.
+2. Integrate a calendar provider and include busy events in slot calculation.
+3. Add confirmation email delivery and calendar-event creation.
 4. Add cancellation, retries, monitoring, and automated end-to-end coverage.
 
 ## Local structure
 
 - `dist/index.html` — interactive static prototype
+- `dist/supabase-config.js` — public Supabase URL and publishable browser key
+- `supabase/migrations/` — versioned database schema, RLS policies, and booking RPC
+- `supabase/config.toml` — local Supabase CLI configuration
 - `appointment-scheduler-product-brief.md` — V1 product requirements
-
